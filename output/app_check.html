@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs — App Check (Problem 11)</title>
+    <style>
+      :root {
+        --navy: #0e2a4f;
+        --gold: #a9833f;
+        --ink: #23201a;
+        --slate: #5a6a80;
+        --line: #e3ddcd;
+        --bg: #f6f1e6;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.55;
+      }
+      header {
+        background: var(--navy);
+        color: #fff;
+        padding: 32px 24px;
+        border-bottom: 5px solid var(--gold);
+      }
+      header h1 {
+        margin: 0 0 6px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.9rem;
+      }
+      header p { margin: 0; color: #cdd9ea; }
+      main { max-width: 900px; margin: 0 auto; padding: 24px; }
+      .intro {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 24px 0;
+        font-size: 0.96rem;
+      }
+      .check {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 22px;
+        margin: 22px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .check h2 {
+        margin: 0 0 4px;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--navy);
+        font-size: 1.3rem;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .check img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin: 12px 0;
+      }
+      .proves {
+        background: #f3eee2;
+        border-left: 4px solid var(--gold);
+        padding: 10px 14px;
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+      .proves strong { color: var(--navy); }
+      footer {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 10px 24px 40px;
+        color: var(--slate);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Campus Customs — Live App Check</h1>
+      <p>Homework 4 · Problem 11 · Tested on the running React + FastAPI site</p>
+    </header>
+
+    <main>
+      <div class="intro">
+        Three live checks of the running storefront (frontend on <code>:5173</code>,
+        FastAPI + PydanticAI backend on <code>:8000</code>). Each check below has a
+        heading, the screenshot captured from the live site, and one or two sentences on
+        what it proves.
+      </div>
+
+      <section class="check">
+        <span class="tag">Check 1 — Honest inventory &amp; price</span>
+        <h2>Chatbot reports real stock and price from the database</h2>
+        <img
+          src="app_check_images/inventory.png"
+          alt="Handsome Dan chat listing per-size stock and price for the Basic Hoodie Big Yale"
+        />
+        <p class="proves">
+          <strong>What it proves:</strong> Asked how many of the Basic Hoodie Big Yale
+          are left in each size, Handsome Dan answers <strong>$68</strong> with the exact
+          per-size counts (XS 15, S 5, M 5, L 8, XL 2, XXL 25). These come straight from
+          the <code>catalogue</code> and <code>inventory</code> tables via the agent's
+          tools — the numbers match the database, so the bot isn't inventing stock or
+          price.
+        </p>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 2 — Dynamic search results</span>
+        <h2>Category question renders matching product cards on the page</h2>
+        <img
+          src="app_check_images/search_results.png"
+          alt="Eight hoodie product cards displayed on the page after asking the chatbot for hoodies"
+        />
+        <p class="proves">
+          <strong>What it proves:</strong> Asking the chatbot “what hoodies do you have?”
+          returns structured product matches that the website renders as clickable
+          product cards (“<strong>8 matches</strong>”, e.g. Basic Hoodie $68, Brooks
+          Brothers $88, Champion Reverse Weave). The agent's results dynamically update
+          the storefront, and each card opens the item's detail page.
+        </p>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 3 — Problem 9 usability feature</span>
+        <h2>Per-tile “Sizes &amp; stock” dropdown (check availability before clicking in)</h2>
+        <img
+          src="app_check_images/usability_size_dropdown.png"
+          alt="A product card with its Sizes and stock dropdown expanded, showing quantity per size"
+        />
+        <p class="proves">
+          <strong>What it proves:</strong> One of the Problem 9 usability improvements —
+          each product tile has a “Sizes &amp; stock” dropdown that expands in place to
+          show live per-size quantities (XS 25, S 25, M 20, L 2, XL 25, XXL 15), so a
+          shopper can confirm their size is available without opening the full product
+          page.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Campus Customs · A Yale student project for MGT&nbsp;409. Screenshots captured from
+      the live site; images are in <code>app_check_images/</code>.
+    </footer>
+  </body>
+</html>

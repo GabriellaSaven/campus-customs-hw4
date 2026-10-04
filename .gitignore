@@ -1,0 +1,25 @@
+# --- Secrets ---
+.env
+*.env
+!.env.example
+
+# --- Data pack (NOT committed: DB + product images) ---
+data/
+*.db
+*.sqlite3
+
+# --- Python ---
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+
+# --- Node / Vite ---
+frontend/node_modules/
+frontend/dist/
+*.local
+*.tsbuildinfo
+
+# --- Runtime / OS ---
+output/audit_trail.json
+.DS_Store
