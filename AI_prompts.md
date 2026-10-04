@@ -407,3 +407,27 @@ log stays readable; and git-ignoring the log since it captures test emails/messa
 also noted that aggressive jailbreak attempts are additionally caught by the provider's
 content filter, while the in-prompt rules handle softer off-policy asks (verified:
 refused to invent a discount code, redirected an off-topic question).
+
+## Problem 13: Package into hw4/ and push to a public GitHub repo
+
+### Initial prompt
+
+Problem 13: put all the code into a folder called hw4 and push it to a public GitHub
+repository (submit the repo URL on Canvas; no zip). Do NOT put the real .env,
+campus_customs.db, or the product images in the repo — use .gitignore and include a
+.env.example with only placeholders. The agent is four files under backend/
+(prompts/prompt.md, agent.py, tools.py, models.py). README.md should explain how to run
+the front and backend after placing the data pack. Use the attached file layout.
+
+### Follow-up prompt
+
+No follow-up prompt was used.
+
+**What was lacking after the initial prompt:** The main design point the prompt implied:
+the data pack (DB + images) must live in a local-only `data/` folder, so I repointed the
+backend to read the DB and serve images from `<repo>/data/` (overridable via
+`CAMPUS_CUSTOMS_DB` / `CAMPUS_CUSTOMS_PRODUCTS`) instead of from `backend/`. I assembled
+`hw4/` to the exact layout, added root `requirements.txt`, `.env.example` (placeholders
+only), `.gitignore`, and a `README.md` with run steps, then verified on the pushed public
+repo that `.env`, `*.db`, the data pack, product images, and node_modules/venv are all
+absent while the source and docs are present.
